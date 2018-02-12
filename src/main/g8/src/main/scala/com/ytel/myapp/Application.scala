@@ -3,9 +3,6 @@ package com.ytel.minions.myapp
 import akka.actor.{ActorRef, Props}
 import akka.routing.BalancingPool
 import com.ytel.miefus._
-import com.ytel.miefus.CaseSpec._
-import com.ytel.miefus.persistence.KafkaPusher
-import com.ytel.miefus.persistence.cassandra.{Cassandra, CassandraException, CassandraQueryStatement, CassandraSuccess}
 
 object Application extends MiefusApplication with KafkaStreamProcessor  {
   override val streamName = "MyStream"
@@ -16,7 +13,7 @@ object Application extends MiefusApplication with KafkaStreamProcessor  {
 }
 
 class MyMessageActor extends CommonActor {
-  val errorTopic = Configuration("error_topics","myapp_error_topic")
+  lazy val errorTopic = Configuration("error_topics","myapp_error_topic")
   override def receive = {
     case x: KafkaMessage =>
       log.info(s"Message Received by MyMessageActor: "+x.msg)
