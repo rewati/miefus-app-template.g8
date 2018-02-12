@@ -7,9 +7,6 @@ import com.ytel.miefus.CaseSpec._
 import com.ytel.miefus.persistence.KafkaPusher
 import com.ytel.miefus.persistence.cassandra.{Cassandra, CassandraException, CassandraQueryStatement, CassandraSuccess}
 
-/**
-  * Created by rewatiraman.
-  */
 object Application extends MiefusApplication with KafkaStreamProcessor  {
   override val streamName = "MyStream"
   lazy val processor: ActorRef =
