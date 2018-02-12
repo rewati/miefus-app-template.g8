@@ -15,7 +15,7 @@ val repoResolvers = new {
 }
 
 resolvers ++= repoResolvers.common
-libraryDependencies += "com.ytel" %% "miefus" % "2.0"
+libraryDependencies += "com.ytel" %% "miefus" % "$miefus_version$"
 
 assemblyMergeStrategy in assembly := {
   case "reference.conf" => MergeStrategy.concat
